@@ -1,0 +1,54 @@
+package com.company;
+
+public class Test_1 {
+    private int Main_Array[] = new int[10];
+    private int Composite_No_Array[] = new int[Main_Array.length];
+    private int Non_Composite_No_Array[] = new int[Main_Array.length];
+    private int current_comp_index = 0;
+    private int current_non_index = 0;
+
+
+    public void setMain_Array(int[] main_Array) {
+        Main_Array = main_Array;
+    }
+
+    public int[] getMain_Array() {
+        return Main_Array;
+    }
+
+    public void group_numbers() {
+        for (int i = 0; i < Main_Array.length; i++) {
+            int check = 0;
+            if (Main_Array[i] == 1) continue;
+            for (int j = 2; j <= Main_Array[i]; j++) {
+                if (Main_Array[i] % j == 0) {
+                    check++;
+                }
+            }
+            if (check > 1) {
+                Composite_No_Array[current_comp_index] = Main_Array[i];
+                current_comp_index++;
+            }
+            if (check == 1) {
+                Non_Composite_No_Array[current_non_index] = Main_Array[i];
+                current_non_index++;
+            }
+        }
+    }
+
+    public void printComposite() {
+        System.out.println("Composite Numbers:");
+        for (int i = 0; i < Composite_No_Array.length; i++) {
+            System.out.print(Composite_No_Array[i]+", ");
+        }
+    }
+
+    public void printNonComposite() {
+        System.out.println("Non-Composite Numbers:");
+        for (int i = 0; i < Non_Composite_No_Array.length; i++) {
+            System.out.print(Non_Composite_No_Array[i]+", ");
+        }
+    }
+
+
+}
